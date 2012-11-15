@@ -6,7 +6,7 @@
 #
 # output:
 #  GLOG_FOUND
-#  GLOG_INCLUDE_DIRS
+#  GLOG_INCLUDE_DIR
 #  GLOG_LIBRARIES
 #
 
@@ -18,7 +18,7 @@ if(NOT DEFINED GLOG_ROOT)
 	set(GLOG_ROOT /usr /usr/local $ENV{GLOG_ROOT})
 endif(NOT DEFINED GLOG_ROOT)
 
-find_path(GLOG_INCLUDE_DIR logging.h
+find_path(GLOG_INCLUDE_DIR glog/logging.h
 	PATHS ${GLOG_ROOT}
 	PATH_SUFFIXES glog/include include
 )

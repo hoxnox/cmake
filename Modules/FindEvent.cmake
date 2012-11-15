@@ -6,7 +6,7 @@
 #
 #  output:
 #  Event_FOUND
-#  Event_INCLUDE_DIRS
+#  Event_INCLUDE_DIR
 #  Event_LIBRARIES
 #
 
@@ -23,11 +23,13 @@ find_path(Event_INCLUDE_DIR event.h
 	PATH_SUFFIXES event/include include
 )
 
-find_library(EventCore_LIBRARIES
+find_library(EventCore_LIBRARY
 	NAMES event_core
 	PATHS ${Event_ROOT}
 	PATH_SUFFIXES lib
 )
+
+set(Event_LIBRARIES ${EventCore_LIBRARY})
 
 add_definitions(-DLIBNET_LIL_ENDIAN)
 
