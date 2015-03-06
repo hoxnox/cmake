@@ -3,6 +3,7 @@
 #
 #  input:
 #  Event_ROOT
+#  Event_USE_STATIC_LIBS
 #
 #  output:
 #  Event_FOUND
@@ -22,6 +23,15 @@ find_path(Event_INCLUDE_DIR event.h
 	PATHS ${Event_ROOT}
 	PATH_SUFFIXES event/include include
 )
+
+if( Event_USE_STATIC_LIBS )
+	set( _Event_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES ${CMAKE_FIND_LIBRARY_SUFFIXES})
+	if(WIN32)
+		set(CMAKE_FIND_LIBRARY_SUFFIXES .lib .a ${CMAKE_FIND_LIBRARY_SUFFIXES})
+	else()
+		set(CMAKE_FIND_LIBRARY_SUFFIXES .a )
+	endif()
+endif()
 
 find_library(EventCore_LIBRARY
 	NAMES event_core
